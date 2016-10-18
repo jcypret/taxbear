@@ -2,9 +2,11 @@ require 'spec_helper'
 
 describe Taxbear::Taxjar do
   describe "#get_rates_by_zipcode", type: :aruba do
-    it "calls TaxJar API with zipcode and auth token" do
+    before(:each) do
       allow(Taxbear::Config).to receive(:get_token) { "definitelynotafaketoken" }
+    end
 
+    it "calls TaxJar API with zipcode and auth token" do
       stub = stub_request(:get, "https://api.taxjar.com/v2/rates/72034")
         .with(headers: {"Authorization" => "Token token=definitelynotafaketoken"})
         .to_return(
