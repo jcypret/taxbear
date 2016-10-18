@@ -26,11 +26,7 @@ module Taxbear
       private
 
       def headers
-        {"Authorization" => "Token token=#{api_token}"}
-      end
-
-      def api_token
-        File.read(CONFIG_FILE)
+        {"Authorization" => "Token token=#{Config.get_token}"}
       end
     end
   end

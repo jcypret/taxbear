@@ -14,9 +14,9 @@ module Taxbear
     private
 
     def ensure_api_key_is_available
-      unless File.exists?(CONFIG_FILE)
+      unless Config.exists?
         token = ask("What is your TaxJar API token?")
-        File.write(CONFIG_FILE, token)
+        Config.save_token(token)
       end
     end
 

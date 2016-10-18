@@ -1,6 +1,7 @@
 # Taxbear
 
 [![Gem Version](https://badge.fury.io/rb/taxbear.svg)](https://badge.fury.io/rb/taxbear)
+[![Code Climate](https://codeclimate.com/github/jcypret/taxbear/badges/gpa.svg)](https://codeclimate.com/github/jcypret/taxbear)
 
 ## Installation
 

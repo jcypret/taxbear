@@ -1,0 +1,14 @@
+{
+  "rate": {
+    "zip": "72034",
+    "state":"AR",
+    "state_rate": "0.065",
+    "county": "FAULKNER",
+    "county_rate": "0.005",
+    "city":"CONWAY",
+    "city_rate": "0.0175",
+    "combined_district_rate":"0.0",
+    "combined_rate":"0.0875",
+    "freight_taxable":true
+  }
+}
