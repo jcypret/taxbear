@@ -2,10 +2,9 @@ require "thor"
 
 module Taxbear
   class CLI < Thor
-    desc "zip ZIPCODE", "displays sales tax rates for supplied zip code"
+    desc "zip [ZIPCODE]", "displays sales tax rates for supplied zip code"
     def zip(zipcode)
       ensure_api_key_is_available
-
       rates = Taxjar.get_rates_by_zipcode(zipcode)
       TableBuilder.print_rates_for_zipcode(rates, zipcode)
     rescue TaxjarError => e
