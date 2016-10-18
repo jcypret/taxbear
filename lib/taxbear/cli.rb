@@ -18,7 +18,6 @@ module Taxbear
       unless File.exists?(CONFIG_FILE)
         token = ask("What is your TaxJar API token?")
         File.write(CONFIG_FILE, token)
-        token
       end
     end
 
