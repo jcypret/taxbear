@@ -1,5 +1,9 @@
+require "taxbear/cli"
+require "taxbear/exceptions"
+require "taxbear/table_builder"
+require "taxbear/taxjar"
 require "taxbear/version"
 
 module Taxbear
-  # Your code goes here...
+  CONFIG_FILE = ENV["HOME"] + "/.taxbear"
 end

@@ -2,23 +2,21 @@
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'taxbear'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
     $ gem install taxbear
 
 ## Usage
 
-TODO: Write usage instructions here
+```shell
+# Lookup sales tax rates for a zip code
+$ taxbar zip 72034
+# +--------+----------+--------+-------------+--------+
+# |             Sales Tax Rates for 72034             |
+# +--------+----------+--------+-------------+--------+
+# |   AR   | FAULKNER | CONWAY | DISTRICT(S) | TOTAL  |
+# +--------+----------+--------+-------------+--------+
+# | 6.500% |  0.500%  | 1.750% |   0.000%    | 8.750% |
+# +--------+----------+--------+-------------+--------+
+```
 
 ## Development
 
