@@ -6,6 +6,8 @@ require 'taxbear'
 require 'webmock/rspec'
 require 'aruba/rspec'
 
+WebMock.disable_net_connect!(allow: "codeclimate.com")
+
 def fixture_path
   File.expand_path('../fixtures', __FILE__)
 end
