@@ -1,5 +1,7 @@
 # Taxbear
 
+[![Gem Version](https://badge.fury.io/rb/taxbear.svg)](https://badge.fury.io/rb/taxbear)
+
 ## Installation
 
     $ gem install taxbear
