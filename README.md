@@ -1,6 +1,7 @@
 # Taxbear
 
 [![Gem Version](https://badge.fury.io/rb/taxbear.svg)](https://badge.fury.io/rb/taxbear)
+[![Build Status](https://travis-ci.org/jcypret/taxbear.svg?branch=master)](https://travis-ci.org/jcypret/taxbear)
 [![Code Climate](https://codeclimate.com/github/jcypret/taxbear/badges/gpa.svg)](https://codeclimate.com/github/jcypret/taxbear)
 
 ## Installation

@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "webmock", "~> 2.1.0"
   spec.add_development_dependency "aruba", "~> 0.14.2"
+  spec.add_development_dependency "codeclimate-test-reporter"
 
   spec.add_dependency "thor", "~> 0.19"
   spec.add_dependency "httparty", "~> 0.14"
