@@ -7,7 +7,6 @@ module Taxbear
       #
       # @return [Boolean] whether the config file exists
       def exists?
-        puts config_file
         File.exist?(config_file)
       end
 
