@@ -6,9 +6,10 @@
 
 ## Usage
 
-```shell
-# Lookup sales tax rates for a zip code
-$ taxbar zip 72034
+Lookup sales tax rates for a zip code:
+
+```bash
+$ taxbear zip 72034
 # +--------+----------+--------+-------------+--------+
 # |             Sales Tax Rates for 72034             |
 # +--------+----------+--------+-------------+--------+
