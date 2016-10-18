@@ -10,13 +10,16 @@ module Taxbear
       # @param rates [Hash] the rates
       # @return [nil] returns nothing, prints to STDOUT
       def print_rates_for_zipcode(rates, zipcode)
-        puts ""
-        puts Terminal::Table.new(
+        output = ""
+        output << "\n"
+        output << Terminal::Table.new(
           title: "Sales Tax Rates for #{zipcode}",
           headings: align_each_cell_center(get_header_rows(rates)),
           rows: [align_each_cell_center(format_rates(rates))]
-        )
-        puts ""
+        ).to_s
+        output << "\n\n"
+
+        puts output
       end
 
       private
