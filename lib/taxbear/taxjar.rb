@@ -24,6 +24,14 @@ module Taxbear
         end
       end
 
+      # Takes a tokens and returns whether the token is valid.
+      #
+      # @param token [String] the token
+      # @return [Boolean] whether token is valid
+      def validate_token(token)
+        get("/categories", {headers: headers(token)}).success?
+      end
+
       private
 
       def require_api_key
@@ -34,8 +42,8 @@ module Taxbear
         raise TaxjarUnauthorized, "You must have a TaxJar API key set to access rates. Use `taxbear login`."
       end
 
-      def headers
-        {"Authorization" => "Token token=#{Config.get_token}"}
+      def headers(token = Config.get_token)
+        {"Authorization" => "Token token=#{token}"}
       end
     end
   end
