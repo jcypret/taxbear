@@ -15,7 +15,7 @@ module Taxbear
       # @return [Hash] the rates returned by API
       def get_rates_by_zipcode(zipcode)
         require_api_key()
-        response = get("/rates/#{zipcode}", {headers: headers})
+        response = get("/rates/#{zipcode}", {headers: auth_header})
 
         if response.success?
           response.fetch("rate")
@@ -29,7 +29,7 @@ module Taxbear
       # @param token [String] the token
       # @return [Boolean] whether token is valid
       def validate_token(token)
-        get("/categories", {headers: headers(token)}).success?
+        get("/categories", headers: auth_header(token)).success?
       end
 
       private
@@ -42,7 +42,7 @@ module Taxbear
         raise TaxjarUnauthorized, "You must have a TaxJar API key set to access rates. Use `taxbear login`."
       end
 
-      def headers(token = Config.get_token)
+      def auth_header(token = Config.get_token)
         {"Authorization" => "Token token=#{token}"}
       end
     end

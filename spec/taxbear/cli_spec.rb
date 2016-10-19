@@ -3,11 +3,10 @@ require "spec_helper"
 describe "Taxbear::CLI" do
   describe "#login" do
     it "displays success message when token is valid" do
-      stub_request(:get, "https://api.taxjar.com/v2/categories")
-        .with(headers: {"Authorization" => "Token token=valid"})
-        .to_return(status: 200)
+      stub_request(:get, "https://api.taxjar.com/v2/categories").to_return(status: 200)
+      allow(STDIN).to receive(:gets).and_return("valid")
+      allow(Taxbear::Config).to receive(:save_token)
 
-      allow(STDIN).to receive(:gets) { "valid" }
       expect(STDOUT).to receive(:puts).with(/Success!/)
 
       Taxbear::CLI.new.login
