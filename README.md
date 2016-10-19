@@ -13,14 +13,14 @@ $ gem install taxbear
 
 ## Usage
 
-1. Set your TaxJar API token:
+(1) Set your TaxJar API token:
 
 ```bash
 $ taxbear login
 #=> What is your TaxJar API token?
 ```
 
-2. Lookup sales tax rates for a zip code:
+(2) Lookup sales tax rates for a zip code:
 
 ```bash
 $ taxbear zip 72034
