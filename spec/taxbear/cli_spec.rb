@@ -6,7 +6,7 @@ describe "Taxbear::CLI" do
       allow(Taxbear::Taxjar).to receive(:validate_token).and_return(true)
       allow(Taxbear::Config).to receive(:save_token)
 
-      allow(STDIN).to receive(:gets)
+      allow_any_instance_of(Taxbear::CLI).to receive(:ask)
       expect(STDOUT).to receive(:puts).with(/Success!/)
 
       Taxbear::CLI.new.login
