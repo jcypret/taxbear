@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Taxbear::Taxjar do
   describe "#get_rates_by_zipcode", type: :aruba do
     before(:each) do
+      allow(Taxbear::Config).to receive(:exists?) { true }
       allow(Taxbear::Config).to receive(:get_token) { "definitelynotafaketoken" }
     end
 

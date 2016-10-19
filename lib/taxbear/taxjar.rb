@@ -14,6 +14,7 @@ module Taxbear
       # @param zipcode [Integer] the zip code
       # @return [Hash] the rates returned by API
       def get_rates_by_zipcode(zipcode)
+        require_api_key()
         response = get("/rates/#{zipcode}", {headers: headers})
 
         if response.success?
@@ -24,6 +25,14 @@ module Taxbear
       end
 
       private
+
+      def require_api_key
+        raise_unauthorized unless Config.exists?
+      end
+
+      def raise_unauthorized
+        raise TaxjarUnauthorized, "You must have a TaxJar API key set to access rates. Use `taxbear login`."
+      end
 
       def headers
         {"Authorization" => "Token token=#{Config.get_token}"}

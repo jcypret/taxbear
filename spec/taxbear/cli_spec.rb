@@ -1,7 +1,23 @@
 require "spec_helper"
 
 describe "Taxbear::CLI" do
+  describe "#login" do
+    it "prompts users for api token" do
+      allow(STDIN).to receive(:gets) { "secureapitoken" }
+      expect(STDOUT).to receive(:puts).with(/Success!/)
+
+      Taxbear::CLI.new.login
+    end
+  end
+
   describe "#zip" do
+    it "requires and API key to get rates" do
+      allow(Taxbear::Config).to receive(:exists?) { false }
+      expect(STDOUT).to receive(:puts).with(/You must have a TaxJar API key set/)
+
+      Taxbear::CLI.new.zip(72034)
+    end
+
     it "prints table of rates based on entered zip code" do
       allow(Taxbear::Config).to receive(:exists?) { true }
       allow(Taxbear::Config).to receive(:get_token) { "definitelynotafaketoken" }

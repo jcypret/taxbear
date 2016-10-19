@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.3 (2016-10-18)
+- Move login to a separate command.
+
 ## 0.1.2 (2016-10-18)
 - Improve CLI help.
 
