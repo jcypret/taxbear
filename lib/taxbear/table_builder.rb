@@ -14,8 +14,8 @@ module Taxbear
         output << "\n"
         output << Terminal::Table.new(
           title: "Sales Tax Rates for #{zipcode}",
-          headings: align_each_cell_center(get_header_rows(rates)),
-          rows: [align_each_cell_center(format_rates(rates))]
+          headings: align_cells_center(get_rate_headers(rates)),
+          rows: [align_cells_center(get_rate_values(rates))]
         ).to_s
         output << "\n\n"
 
@@ -24,7 +24,7 @@ module Taxbear
 
       private
 
-      def align_each_cell_center(row)
+      def align_cells_center(row)
         row.map {|c| align_center(c)}
       end
 
@@ -32,11 +32,11 @@ module Taxbear
         {value: value, alignment: :center}
       end
 
-      def get_header_rows(rates)
+      def get_rate_headers(rates)
         [*rates.fetch_values("state", "county", "city"), "DISTRICT(S)", "TOTAL"]
       end
 
-      def format_rates(rates)
+      def get_rate_values(rates)
         rates
           .fetch_values("state_rate", "county_rate", "city_rate", "combined_district_rate", "combined_rate")
           .map {|r| format_rate(r)}
