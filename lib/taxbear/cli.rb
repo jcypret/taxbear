@@ -5,10 +5,10 @@ module Taxbear
     desc "login", "Set API key used to authenticate with TaxJar"
     def login
       valid_token = false
-      while !valid_token
+      until valid_token
         token = ask("What is your TaxJar API token?")
         valid_token = Taxjar.validate_token(token)
-        say_nope if !valid_token
+        say_nope unless valid_token
       end
       Config.save_token(token)
       print_success "Success! You are now ready to access the TaxJar API."
