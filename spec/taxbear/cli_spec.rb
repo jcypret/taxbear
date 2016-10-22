@@ -1,6 +1,9 @@
 require "spec_helper"
 
 describe "Taxbear::CLI" do
+  # Supress console noise caused by stubbing
+  before { allow($stdout).to receive(:write) }
+
   describe "#login" do
     it "displays success message when token is valid" do
       allow(Taxbear::Taxjar).to receive(:validate_token).and_return(true)
