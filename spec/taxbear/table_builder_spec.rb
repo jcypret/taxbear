@@ -17,7 +17,7 @@ describe Taxbear::TableBuilder do
 
       expect(STDOUT).to receive(:puts).with(expected_table)
 
-      rates = JSON.parse(File.read(fixture('taxjar_zipcode.json'))).fetch("rate")
+      rates = json_fixture("taxjar_zipcode.json").fetch("rate")
       Taxbear::TableBuilder.print_rates_for_zipcode(rates, "72034")
     end
   end

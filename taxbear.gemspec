@@ -1,7 +1,7 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'taxbear/version'
+require "taxbear/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "taxbear"
@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Justin Cypret"]
   spec.email         = ["jcypret@gmail.com"]
 
-  spec.summary       = %q{A CLI for interacting with the TaxJar API.}
+  spec.summary       = "A CLI for interacting with the TaxJar API."
   spec.homepage      = "https://github.com/jcypret/taxbear"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }

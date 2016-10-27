@@ -1,7 +1,6 @@
 module Taxbear
+  # Manages the configuration file stored on the user's computer.
   class Config
-    # This class manages the configuration file stored on the user's computer.
-
     class << self
       # Checks whether the Taxbear config file exists on the users computer.
       #
@@ -13,7 +12,7 @@ module Taxbear
       # Returns the TaxJar API token loaded from the users config file.
       #
       # @return [String] the TaxJar API token
-      def get_token
+      def token
         File.read(config_file)
       end
 

@@ -2,8 +2,8 @@ require "thor"
 require "httparty"
 
 module Taxbear
+  # Interacts with the TaxJar API.
   class Taxjar
-    # A class to interect with the TaxJar API.
     include HTTParty
 
     base_uri "https://api.taxjar.com/v2"
@@ -14,13 +14,13 @@ module Taxbear
       # @param zipcode [Integer] the zip code
       # @return [Hash] the rates returned by API
       def get_rates_by_zipcode(zipcode)
-        require_api_key()
-        response = get("/rates/#{zipcode}", {headers: auth_header})
+        require_api_key
+        response = get("/rates/#{zipcode}", headers: auth_header)
 
         if response.success?
           response.fetch("rate")
         else
-          raise TaxjarError, "Unable to get tax rates from TaxJar API."
+          fail TaxjarError, "Unable to get tax rates from TaxJar API."
         end
       end
 
@@ -39,11 +39,11 @@ module Taxbear
       end
 
       def raise_unauthorized
-        raise TaxjarUnauthorized, "You must have a TaxJar API key set to access rates. Use `taxbear login`."
+        fail TaxjarUnauthorized, "You must have a TaxJar API key set to access rates. Use `taxbear login`."
       end
 
-      def auth_header(token = Config.get_token)
-        {"Authorization" => "Token token=#{token}"}
+      def auth_header(token = Config.token)
+        { "Authorization" => "Token token=#{token}" }
       end
     end
   end

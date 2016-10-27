@@ -1,6 +1,8 @@
 require "thor"
 
 module Taxbear
+  # Primary entry point for interacting with application.
+  # Public methods are added via the Thor DSL.
   class CLI < Thor
     desc "login", "Set API key used to authenticate with TaxJar"
     def login

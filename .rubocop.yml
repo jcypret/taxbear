@@ -1,0 +1,11 @@
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+Style/SignalException:
+  EnforcedStyle: semantic
+Metrics/BlockLength:
+  Exclude:
+  - "spec/**/*.rb"
+Metrics/LineLength:
+  Max: 120

@@ -1,9 +1,8 @@
 require "terminal-table"
 
 module Taxbear
+  # Builds tables for outputing to STDOUT.
   class TableBuilder
-    # A class to build tables for outputing to STDOUT.
-
     class << self
       # Takes the rates and prints them as a nice table to STDOUT.
       #
@@ -25,11 +24,11 @@ module Taxbear
       private
 
       def align_cells_center(row)
-        row.map {|c| align_center(c)}
+        row.map { |c| align_center(c) }
       end
 
       def align_center(value)
-        {value: value, alignment: :center}
+        { value: value, alignment: :center }
       end
 
       def get_rate_headers(rates)
@@ -39,11 +38,11 @@ module Taxbear
       def get_rate_values(rates)
         rates
           .fetch_values("state_rate", "county_rate", "city_rate", "combined_district_rate", "combined_rate")
-          .map {|r| format_rate(r)}
+          .map { |r| format_rate(r) }
       end
 
       def format_rate(rate)
-        sprintf('%.3f', rate.to_f * 100) + "%"
+        format("%.3f", rate.to_f * 100) + "%"
       end
     end
   end
