@@ -8,7 +8,7 @@ module Taxbear
       until valid_token
         token = ask("What is your TaxJar API token?")
         valid_token = Taxjar.validate_token(token)
-        say_nope unless valid_token
+        print_token_error unless valid_token
       end
       Config.save_token(token)
       print_success "Success! You are now ready to access the TaxJar API."
@@ -34,11 +34,11 @@ module Taxbear
       puts set_color(success_message, :green)
     end
 
-    def say_nope
-      print_error(random_no)
+    def print_token_error
+      print_error(token_error)
     end
 
-    def random_no
+    def token_error
       [
         "Nope, that's not correct.",
         "Sorry, not quite right.",
