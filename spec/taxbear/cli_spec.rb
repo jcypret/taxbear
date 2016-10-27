@@ -2,15 +2,24 @@ require "spec_helper"
 
 describe "Taxbear::CLI" do
   # Supress console noise caused by stubbing
-  before { allow($stdout).to receive(:write) }
+  before { allow(STDOUT).to receive(:write) }
 
   describe "#login" do
     it "displays success message when token is valid" do
+      allow_any_instance_of(Taxbear::CLI).to receive(:ask)
       allow(Taxbear::Taxjar).to receive(:validate_token).and_return(true)
       allow(Taxbear::Config).to receive(:save_token)
 
-      allow_any_instance_of(Taxbear::CLI).to receive(:ask)
       expect(STDOUT).to receive(:puts).with(/Success!/)
+
+      Taxbear::CLI.new.login
+    end
+
+    it "displays error message when token is invalid" do
+      allow_any_instance_of(Taxbear::CLI).to receive(:ask)
+      allow(Taxbear::Taxjar).to receive(:validate_token).and_return(false, true)
+
+      expect_any_instance_of(Taxbear::CLI).to receive(:print_token_error).once
 
       Taxbear::CLI.new.login
     end
@@ -19,6 +28,7 @@ describe "Taxbear::CLI" do
   describe "#zip" do
     it "requires and API key to get rates" do
       allow(Taxbear::Config).to receive(:exists?) { false }
+
       expect(STDOUT).to receive(:puts).with(/You must have a TaxJar API key set/)
 
       Taxbear::CLI.new.zip(72034)
