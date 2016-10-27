@@ -19,7 +19,7 @@ describe "Taxbear::CLI" do
       allow_any_instance_of(Taxbear::CLI).to receive(:ask)
       allow(Taxbear::Taxjar).to receive(:validate_token).and_return(false, true)
 
-      expect_any_instance_of(Taxbear::CLI).to receive(:print_token_error).once
+      expect_any_instance_of(Taxbear::CLI).to receive(:print_token_error).once.and_call_original
 
       Taxbear::CLI.new.login
     end
