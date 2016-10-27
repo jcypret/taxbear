@@ -4,7 +4,6 @@ CodeClimate::TestReporter.start
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'taxbear'
 require 'webmock/rspec'
-require 'aruba/rspec'
 
 WebMock.disable_net_connect!(allow: "codeclimate.com")
 
